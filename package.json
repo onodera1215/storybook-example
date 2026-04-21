@@ -10,7 +10,8 @@
     "vrt:baseline": "rm -rf .reg/expected && mkdir -p .reg && cp -r __screenshots__ .reg/expected && echo '✅ Baseline updated at .reg/expected/'",
     "vrt:run": "reg-suit run",
     "vrt:report": "npx http-server .reg -p 8080 -o /index.html",
-    "vrt:all": "npm run build-storybook && npm run vrt:capture && npm run vrt:run"
+    "vrt:all": "npm run build-storybook && npm run vrt:capture && npm run vrt:run",
+    "msw:init": "msw init public/ --save"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -24,10 +25,17 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "http-server": "^14.1.1",
+    "msw": "^2.7.0",
+    "msw-storybook-addon": "^2.0.4",
     "reg-suit": "^0.14.3",
     "storybook": "^8.6.0",
     "storycap": "^5.0.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.11"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
