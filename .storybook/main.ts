@@ -10,6 +10,8 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
+  // Serve `public/` so MSW's service worker (mockServiceWorker.js) is reachable.
+  staticDirs: ['../public'],
   docs: {
     autodocs: false,
   },
