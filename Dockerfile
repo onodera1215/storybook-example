@@ -22,3 +22,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Tell Puppeteer/storycap to use the system-installed Chromium
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+
+WORKDIR /app
+
+RUN chown -R node:node /app
+
+USER node
+
+RUN curl -fsSL https://claude.ai/install.sh | bash \
+    && npx storybook add @storybook/addon-mcp \
+    && npx mcp-add --type http --url "http://localhost:6006/mcp" --scope project

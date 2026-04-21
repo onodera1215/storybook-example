@@ -1,0 +1,10 @@
+services:
+  storybook:
+    build: .
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/app
+      - ${HOME}/.claude.json:/home/node/.claude.json:ro
+      - ${HOME}/.claude:/home/node/.claude:ro
+    command: ["sleep", "infinity"]

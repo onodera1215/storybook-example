@@ -37,7 +37,7 @@ export function ArticlePageView({ article }: ArticlePageViewProps) {
         publishedAt={article.publishedAt}
         tags={article.tags}
       />
-
+      HOGE
       <ArticleHero imageUrl={article.heroImageUrl} alt={article.title} />
 
       <ArticleBody paragraphs={article.body} locked={v.paywall} />
