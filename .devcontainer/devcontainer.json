@@ -1,0 +1,32 @@
+{
+  "name": "VRT Sample (Storybook + storycap + reg-suit)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [6006, 8080],
+  "portsAttributes": {
+    "6006": {
+      "label": "Storybook",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "reg-suit report",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "postCreateCommand": "npm install",
+  "remoteUser": "node"
+}

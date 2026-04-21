@@ -1,0 +1,33 @@
+{
+  "name": "vrt-sample",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static",
+    "vrt:capture": "storycap --serverCmd \"npx http-server storybook-static -p 6006 --silent\" http://localhost:6006 --serverTimeout 60000 -o __screenshots__",
+    "vrt:baseline": "rm -rf .reg/expected && mkdir -p .reg && cp -r __screenshots__ .reg/expected && echo '✅ Baseline updated at .reg/expected/'",
+    "vrt:run": "reg-suit run",
+    "vrt:report": "npx http-server .reg -p 8080 -o /index.html",
+    "vrt:all": "npm run build-storybook && npm run vrt:capture && npm run vrt:run"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/react": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "http-server": "^14.1.1",
+    "reg-suit": "^0.14.3",
+    "storybook": "^8.6.0",
+    "storycap": "^5.0.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}
