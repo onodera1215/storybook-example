@@ -1,5 +1,4 @@
 import type { Preview } from '@storybook/react';
-import { withScreenshot } from 'storycap';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 import '../src/index.css';
 
@@ -10,6 +9,7 @@ initialize({ onUnhandledRequest: 'bypass' });
 const preview: Preview = {
   parameters: {
     layout: 'padded',
+    // Consumed by scripts/vrt-capture.mjs. Per-story overrides are supported.
     screenshot: {
       viewports: {
         sp: { width: 375, height: 667 },
@@ -20,7 +20,6 @@ const preview: Preview = {
     },
   },
   loaders: [mswLoader],
-  decorators: [withScreenshot],
 };
 
 export default preview;
