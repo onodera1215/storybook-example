@@ -40,6 +40,14 @@ function startServer() {
   proc.on("error", (err) => {
     console.error("[vrt] http-server failed to start:", err);
   });
+  proc.on("exit", (code, signal) => {
+    if (code !== 0) {
+      console.error(
+        `[vrt] http-server exited with code ${code} (signal: ${signal})`,
+      );
+    }
+    console.log("[vrt] http-server stopped");
+  });
   return proc;
 }
 
