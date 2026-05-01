@@ -5,6 +5,5 @@ services:
       - "6006:6006"
     volumes:
       - .:/app
-      - ${HOME}/.claude.json:/home/node/.claude.json:ro
-      - ${HOME}/.claude:/home/node/.claude:ro
+      - /app/node_modules
     command: ["sleep", "infinity"]

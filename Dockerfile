@@ -10,10 +10,14 @@ RUN apt-get update -y \
 
 WORKDIR /app
 
+COPY . .
+
 RUN chown -R node:node /app
 
 
 USER node
+
+RUN npm ci
 
 RUN npx playwright install  
 
